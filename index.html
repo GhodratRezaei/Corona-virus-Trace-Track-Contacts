@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Pandamic Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <header>
+      <div class="overlay">
+      <h3>Trace and Track People Contacts</h3>
+      </div>
+    </header>
+
+  <div class="input">
+  <button id="Most_Dangerous_Places_Button" class="unclicked" onclick="Most_Dangerous_Places()">Most Dangerous Places</button>
+  <button id="Most_Dangerous_Time_Button"class="unclicked" onclick="Most_Dangerous_Time()">Most Dangerous Time</button>
+  <button id="Most_Dangerous_Time_of_a_Place_Button" class="unclicked" onclick="Get_Most_Dangerous_Time_of_a_Place_Input()">Most Dangerous Time of a Place</button>
+  <button id="Person_History_Button" class="unclicked" onclick="Get_Person_History_Input()">Person History</button>
+  <button id="Possibility_of_Infection_Button" class="unclicked" onclick="Get_Possibility_of_Infection_Input()">Possibility of Infection</button>
+  </div>
+
+  <div class="hide" id="Most_Dangerous_Time_of_a_Place_input_div">
+      <center>
+      <p>name of place: </p>
+      <input type="text" id="Most_Dangerous_Time_of_a_Place_input" value="Hefta Bar"/>
+      <button onclick="Most_Dangerous_Time_of_a_Place()">Answer</button>
+      </center>
+  </div>
+
+  <div class="hide" id="Person_History_Input_div">
+      <center>
+      <p>name of person: </p>
+      <input type="text" id="Person_History_Input" value="Ali"/>
+      <button onclick="Person_History()">Answer</button>
+      </center>
+  </div>
+  <div class="hide" id="Possibility_of_Infection_Input_div">
+      <center>
+      <p>name of person: </p>
+      <input type="text" id="Possibility_of_Infection_Input" value="Ali"/>
+      <button onclick="Possibility_of_Infection()">Answer</button>
+      </center>
+  </div>
+    
+
+
+    <footer>
+    <p>Authors: Mahsa Meymari - Alireza Nadirkhanlou - Ghodrat Rezaei -   Amirhossein zhalehmehrabi - Mahshid Shiri</p>
+    </footer>
+
+
+  <script>
+      function Most_Dangerous_Places() {
+        unclick_everything()
+        hide_everything()
+        location.href='http://127.0.0.1:5050/most_dangerous_place'
+        document.getElementById('Most_Dangerous_Places_Button').className="clicked";
+      }
+      function Most_Dangerous_Time(){
+        hide_everything()
+        unclick_everything()
+        location.href='http://127.0.0.1:5050/most_dangerous_time'
+        document.getElementById('Most_Dangerous_Time_Button').className="clicked";
+      }
+      function Get_Most_Dangerous_Time_of_a_Place_Input(){
+        unclick_everything()
+        document.getElementById('Most_Dangerous_Time_of_a_Place_Button').className="clicked";
+        hide_everything()
+        document.getElementById('Most_Dangerous_Time_of_a_Place_input_div').className="show";
+      }
+      function Most_Dangerous_Time_of_a_Place(){
+        place= document.getElementById('Most_Dangerous_Time_of_a_Place_input').value
+        location.href='http://localhost:5050/most_dangerous_time_of_place/'+place
+      }
+      function Get_Person_History_Input(){
+        unclick_everything()
+        document.getElementById('Person_History_Button').className="clicked";
+        hide_everything()
+        document.getElementById('Person_History_Input_div').className="show";
+      }
+
+      function Person_History(){
+        name= document.getElementById('Person_History_Input').value
+        location.href='http://localhost:5050/person_history/'+name
+      }
+
+      function Get_Possibility_of_Infection_Input(){
+        unclick_everything()
+        document.getElementById('Possibility_of_Infection_Button').className="clicked";
+        hide_everything()
+        document.getElementById('Possibility_of_Infection_Input_div').className="show";
+      }
+
+      function Possibility_of_Infection(){
+        name= document.getElementById('Possibility_of_Infection_Input').value
+        location.href='http://localhost:5050/possibility_of_infection/'+name
+      }
+
+      function hide_everything(){
+         document.getElementById('Person_History_Input_div').className="hide";
+         document.getElementById('Most_Dangerous_Time_of_a_Place_input_div').className="hide"
+        document.getElementById('Possibility_of_Infection_Input_div').className="hide"
+      }
+      function unclick_everything(){
+        document.getElementById('Possibility_of_Infection_Button').className="unclicked";
+         document.getElementById('Person_History_Button').className="unclicked";
+         document.getElementById('Most_Dangerous_Time_of_a_Place_Button').className="unclicked";
+         document.getElementById('Most_Dangerous_Places_Button').className="unclicked";
+         document.getElementById('Most_Dangerous_Time_Button').className="unclicked";
+      }
+
+
+    </script>
+
+  </body>
+</html>

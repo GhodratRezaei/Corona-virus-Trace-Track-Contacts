@@ -1,0 +1,6 @@
+It is recommended to do everything in a virtual environment
+
+1. run `pip install -r requirements` to install all necessary libraries
+2. Enter the credentials of the database into `credentials.txt`
+3. Run `run.py` using python
+4. The service is now running on port 5050
